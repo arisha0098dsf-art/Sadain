@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SADAIN | Home</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      color: white;
+      background:
+        radial-gradient(circle at 20% 20%, #9d00ff55, transparent 35%),
+        radial-gradient(circle at 80% 70%, #ff149355, transparent 35%),
+        linear-gradient(135deg, #10001c, #240035, #0b0012);
+      overflow-x: hidden;
+    }
+
+    /* NAVBAR */
+    nav {
+      width: 100%;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 8%;
+      background: rgba(10, 0, 20, 0.55);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(255, 105, 220, 0.2);
+      position: relative;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: 3px;
+      color: #fff;
+      text-shadow:
+        0 0 10px #d000ff,
+        0 0 25px #ff1493;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 35px;
+      list-style: none;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      position: relative;
+      transition: 0.3s;
+    }
+
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -8px;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #a100ff, #ff1493);
+      box-shadow: 0 0 10px #ff1493;
+      transform: translateX(-50%);
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #ff72d2;
+      text-shadow: 0 0 10px #ff1493;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: calc(100vh - 80px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 850px;
+      animation: fadeUp 1.2s ease;
+    }
+
+    .small-text {
+      color: #ff69d4;
+      letter-spacing: 5px;
+      font-size: 14px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-size: clamp(65px, 12vw, 150px);
+      font-weight: 900;
+      letter-spacing: 10px;
+      background: linear-gradient(
+        90deg,
+        #a100ff,
+        #ff1493,
+        #ff72d2,
+        #a100ff
+      );
+      background-size: 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientMove 5s infinite linear;
+      filter: drop-shadow(0 0 25px #b000ff66);
+    }
+
+    .hero h2 {
+      margin-top: 10px;
+      font-size: 25px;
+      color: #f5d9ff;
+      font-weight: 400;
+    }
+
+    .hero p {
+      margin: 25px auto;
+      max-width: 600px;
+      color: #cdbbd5;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* BUTTONS */
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      position: relative;
+      padding: 14px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      overflow: hidden;
+      border: 1px solid #ff4bc4;
+      background: linear-gradient(135deg, #7a00ff, #ff1493);
+      box-shadow:
+        0 0 15px #a100ff88,
+        0 0 35px #ff149344;
+      transition: 0.35s;
+    }
+
+    .btn:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow:
+        0 0 20px #d000ff,
+        0 0 50px #ff1493aa;
+    }
+
+    .btn-outline {
+      background: rgba(255,255,255,0.04);
+    }
+
+    /* GLOW CIRCLES */
+    .glow {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .glow1 {
+      width: 250px;
+      height: 250px;
+      background: #8a00ff;
+      top: 15%;
+      left: -100px;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .glow2 {
+      width: 300px;
+      height: 300px;
+      background: #ff008c;
+      bottom: -100px;
+      right: -100px;
+      animation: float 7s ease-in-out infinite reverse;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes gradientMove {
+      0% {
+        background-position: 0%;
+      }
+      100% {
+        background-position: 300%;
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-35px);
+      }
+    }
+
+    /* MOBILE */
+    @media (max-width: 700px) {
+      nav {
+        padding: 0 5%;
+      }
+
+      nav ul {
+        gap: 15px;
+      }
+
+      nav ul li a {
+        font-size: 13px;
+      }
+
+      .hero h1 {
+        letter-spacing: 5px;
+      }
+
+      .hero h2 {
+        font-size: 20px;
+      }
+    }
+    
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="logo">SADAIN</div>
+
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+
+    <div class="glow glow1"></div>
+    <div class="glow glow2"></div>
+
+    <div class="hero-content">
+
+      <div class="small-text">Welcome To</div>
+
+      <h1>SADAIN</h1>
+
+      <h2>CREATE • INSPIRE • EXPLORE</h2>
+
+      <p>
+        Welcome to SADAIN — a modern digital experience
+        designed with creativity, style and a touch of neon.
+        Discover something different.
+      </p>
+
+      <div class="buttons">
+        <a href="#" class="btn">Explore Now</a>
+        <a href="#" class="btn btn-outline">Learn More</a>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>

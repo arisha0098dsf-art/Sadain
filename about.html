@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SADAIN | About</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      color: white;
+      background:
+        radial-gradient(circle at 15% 20%, #9d00ff55, transparent 35%),
+        radial-gradient(circle at 85% 75%, #ff149355, transparent 35%),
+        linear-gradient(135deg, #10001c, #240035, #0b0012);
+      overflow-x: hidden;
+    }
+
+    /* NAVBAR */
+    nav {
+      width: 100%;
+      height: 80px;
+      padding: 0 8%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      background: rgba(10, 0, 20, 0.55);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(255, 105, 220, 0.2);
+
+      position: relative;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: 3px;
+
+      color: white;
+
+      text-shadow:
+        0 0 10px #d000ff,
+        0 0 25px #ff1493;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 35px;
+      list-style: none;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      position: relative;
+      transition: 0.3s;
+    }
+
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -8px;
+      width: 0;
+      height: 2px;
+
+      background: linear-gradient(
+        90deg,
+        #a100ff,
+        #ff1493
+      );
+
+      box-shadow: 0 0 10px #ff1493;
+
+      transform: translateX(-50%);
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #ff72d2;
+      text-shadow: 0 0 10px #ff1493;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    /* ABOUT SECTION */
+    .about {
+      min-height: calc(100vh - 80px);
+      padding: 80px 8%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      position: relative;
+    }
+
+    .about-container {
+      width: 100%;
+      max-width: 1100px;
+
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+
+      align-items: center;
+
+      animation: fadeUp 1s ease;
+    }
+
+    /* LEFT SIDE */
+    .about-text .small-title {
+      color: #ff69d4;
+      letter-spacing: 5px;
+      font-size: 14px;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    .about-text h1 {
+      font-size: clamp(45px, 6vw, 75px);
+      font-weight: 900;
+
+      background: linear-gradient(
+        90deg,
+        #a100ff,
+        #ff1493,
+        #ff72d2
+      );
+
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      filter: drop-shadow(0 0 15px #b000ff55);
+      margin-bottom: 20px;
+    }
+
+    .about-text h2 {
+      font-size: 25px;
+      margin-bottom: 20px;
+      color: #f8ddff;
+    }
+
+    .about-text p {
+      color: #cdbbd5;
+      line-height: 1.8;
+      font-size: 16px;
+      margin-bottom: 18px;
+    }
+
+    /* INFO CARDS */
+    .info-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .info-card {
+      padding: 22px;
+
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 105, 220, 0.25);
+
+      border-radius: 18px;
+
+      backdrop-filter: blur(15px);
+
+      transition: 0.35s;
+    }
+
+    .info-card:hover {
+      transform: translateY(-8px);
+
+      border-color: #ff3cc7;
+
+      box-shadow:
+        0 0 20px #a100ff55,
+        0 0 40px #ff149344;
+    }
+
+    .info-card h3 {
+      color: #ff69d4;
+      margin-bottom: 8px;
+    }
+
+    .info-card p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    /* RIGHT SIDE */
+    .about-box {
+      min-height: 450px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      position: relative;
+
+      background: rgba(255, 255, 255, 0.04);
+
+      border: 1px solid rgba(255, 105, 220, 0.25);
+
+      border-radius: 30px;
+
+      backdrop-filter: blur(18px);
+
+      box-shadow:
+        0 0 30px #9d00ff22,
+        inset 0 0 30px #ff149311;
+
+      overflow: hidden;
+    }
+
+    .about-box::before {
+      content: "";
+
+      position: absolute;
+
+      width: 250px;
+      height: 250px;
+
+      background: #a100ff;
+
+      border-radius: 50%;
+
+      filter: blur(90px);
+
+      opacity: 0.35;
+
+      top: -80px;
+      right: -80px;
+    }
+
+    .about-box::after {
+      content: "";
+
+      position: absolute;
+
+      width: 220px;
+      height: 220px;
+
+      background: #ff1493;
+
+      border-radius: 50%;
+
+      filter: blur(90px);
+
+      opacity: 0.3;
+
+      bottom: -80px;
+      left: -80px;
+    }
+
+    .circle {
+      width: 240px;
+      height: 240px;
+
+      border-radius: 50%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 55px;
+      font-weight: 900;
+
+      background:
+        linear-gradient(
+          135deg,
+          #8a00ff,
+          #ff1493
+        );
+
+      box-shadow:
+        0 0 30px #a100ff,
+        0 0 70px #ff1493aa;
+
+      animation: floating 4s ease-in-out infinite;
+
+      z-index: 2;
+    }
+
+    /* GLOW */
+    .glow {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+
+    .glow-one {
+      width: 250px;
+      height: 250px;
+      background: #8a00ff;
+      top: 10%;
+      left: -120px;
+      opacity: 0.35;
+    }
+
+    .glow-two {
+      width: 300px;
+      height: 300px;
+      background: #ff008c;
+      bottom: -120px;
+      right: -100px;
+      opacity: 0.3;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes floating {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    /* MOBILE */
+    @media (max-width: 800px) {
+
+      nav {
+        padding: 0 5%;
+      }
+
+      nav ul {
+        gap: 15px;
+      }
+
+      nav ul li a {
+        font-size: 13px;
+      }
+
+      .about {
+        padding: 60px 6%;
+      }
+
+      .about-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .about-box {
+        min-height: 350px;
+      }
+
+      .circle {
+        width: 190px;
+        height: 190px;
+        font-size: 40px;
+      }
+    }
+
+    @media (max-width: 500px) {
+
+      nav .logo {
+        font-size: 22px;
+      }
+
+      nav ul {
+        gap: 10px;
+      }
+
+      nav ul li a {
+        font-size: 11px;
+      }
+
+      .info-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+
+    <div class="logo">
+      SADAIN
+    </div>
+
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+
+  </nav>
+
+
+  <!-- ABOUT -->
+  <section class="about">
+
+    <div class="glow glow-one"></div>
+    <div class="glow glow-two"></div>
+
+    <div class="about-container">
+
+      <!-- TEXT -->
+      <div class="about-text">
+
+        <div class="small-title">
+          Discover SADAIN
+        </div>
+
+        <h1>About Us</h1>
+
+        <h2>Where Creativity Meets Technology.</h2>
+
+        <p>
+          Welcome to SADAIN — a creative digital space
+          built around modern design, technology and
+          imagination.
+        </p>
+
+        <p>
+          Our goal is to create experiences that look
+          beautiful, feel smooth and leave a lasting
+          impression.
+        </p>
+
+        <div class="info-cards">
+
+          <div class="info-card">
+            <h3>01</h3>
+            <p>Modern & Creative Design</p>
+          </div>
+
+          <div class="info-card">
+            <h3>02</h3>
+            <p>Smooth User Experience</p>
+          </div>
+
+          <div class="info-card">
+            <h3>03</h3>
+            <p>Powerful Technology</p>
+          </div>
+
+          <div class="info-card">
+            <h3>04</h3>
+            <p>Made With Passion</p>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- VISUAL -->
+      <div class="about-box">
+
+        <div class="circle">
+          SADAIN
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</body>
+</html>
